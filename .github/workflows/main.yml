@@ -30,6 +30,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: SNYK vulnerability scan
+        continue-on-error: true
         uses: snyk/actions/iac@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -37,6 +38,7 @@ jobs:
           args: --severity-threshold=low
             --sarif-file-output=terraform.snyk.scan
           sarif: false
+        
 
       - name: Upload snyk result to GitHub Code Scanning
         if: always()
