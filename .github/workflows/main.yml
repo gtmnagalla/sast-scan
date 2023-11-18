@@ -36,7 +36,6 @@ jobs:
         with:
           args: --severity-threshold=low
             --sarif-file-output=terraform.snyk.scan
-          command: monitor
           sarif: false
 
       - name: Upload snyk result to GitHub Code Scanning
